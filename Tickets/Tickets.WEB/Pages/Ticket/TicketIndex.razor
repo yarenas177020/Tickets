@@ -1,0 +1,36 @@
+﻿@page "/ticket"
+@inject IRepository repository
+@inject NavigationManager navigationManager
+@inject SweetAlertService sweetAlertService
+
+<h3>TicketsIndex</h3>
+
+
+
+<div class="container text-center">
+    <div class="row align-items-center">
+        <div class="col">            
+            <input type="text" id="Cod" @bind-value="ticket"/>
+        </div>
+        <div class="col">
+            <button class="btn btn-success" type="submit" @onclick="Create"><i class="oi oi-browser" /> Validar Código</button>
+        </div>
+    </div>
+</div>
+@code {
+ 
+    private string ticket { get; set; } 
+
+    private async Task Create()
+    {
+        var httpResponse = await repository.Get($"api/ticket{ticket}");
+
+        if (httpResponse.Error)
+        {
+            var mensajeError = await httpResponse.GetErrorMessageAsync();
+            await sweetAlertService.FireAsync("Error", mensajeError, SweetAlertIcon.Error);
+        }
+
+       
+    }
+}
