@@ -12,11 +12,11 @@ namespace Ticktets.Shared.Entities
 
         public string? TicketID { get; set; }
 
-        public DateTime? UseDate { get; set; }
+        public DateTime? UseDate { get; set; } = null;
 
-        public bool IsUsed { get; set; }
+        public bool IsUsed { get; set; } = false;
 
-        public string? Tribune { get; set; }
+        public string? Tribune { get; set; } = null;
 
     }
 }
