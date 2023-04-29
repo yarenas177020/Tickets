@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ticktets.Shared.Entities
 {
-    public class TicketControl
+    public class Ticket
     {
         public int Id { get; set; }
 
